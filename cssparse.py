@@ -3,8 +3,7 @@ import re
 class CssParse:
     """A simple CSS style parser.
 
-    This parses a string and looks for CSS open and close braces. This does not parse
-    selector names. It is a fast way to search for styles only.
+   It is a fast way to search for selectors and styles.
     """
 
     def __init__(self):
@@ -35,8 +34,8 @@ class CssParse:
             stripped = re.sub(r"[\\]{1,6}[nrt]", "", stripped)
             return str(stripped)
 
-    def parse(self, css) -> list:
-        """Parse the CSS string into a list of lists.
+    def parse(self, css) -> dict:
+        """Parse the CSS string into a dict of lists.
 
         Sequentially search a string until { character is found, then write everything after
         that character until the next } character.
@@ -45,7 +44,7 @@ class CssParse:
             css {str} -- String of CSS data from external style sheet.
 
         Returns:
-            self.output list -- List of selector styles
+            self.output dict -- Dict of selector names and styles
 
             Example:
                 margin-bottom:60px;display:block

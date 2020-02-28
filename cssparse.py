@@ -15,9 +15,9 @@ class CssParse:
         return str(self.output)
 
     def __repr__(self):
-        return self.output
+        return str(self.output)
 
-    def strip(self, css) -> str:
+    def __strip(self, css) -> str:
         """Strip the CSS string.
 
         Ensuring cleaning of any extra whitespace.
@@ -53,7 +53,7 @@ class CssParse:
         if not isinstance(css, str):
             return []
         else:
-            self.css = self.strip(css)
+            self.css = self.__strip(css)
             b = 0
             key_name = str()
             for _ in enumerate(self.css):
